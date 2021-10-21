@@ -1,0 +1,16 @@
+{
+  "type": "commonjs",
+  "name": "istat-ws",
+  "version": "1.0.0",
+  "description": "A webservice for ISTAT permalink",
+  "main": "index.js",
+  "scripts": {
+    "debug": "node test/test1.js"
+  },
+  "author": "Vincenzo D'Aniello",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parser": "^3.0.0",
+    "js-event-bus": "^1.1.1"
+  }
+}
