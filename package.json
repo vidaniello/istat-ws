@@ -5,7 +5,8 @@
   "description": "A webservice for ISTAT permalink",
   "main": "index.js",
   "scripts": {
-    "debug": "node test/test1.js"
+    "test": "node test/test1.js",
+    "debug": "node main.js"
   },
   "author": "Vincenzo D'Aniello",
   "license": "ISC",

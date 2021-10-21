@@ -1,18 +1,21 @@
 const https = require('https');
 const fs = require('fs');
 const csv = require('./database');
+const eventBus = require('js-event-bus')();
 
 const dataDir = "data/";
 
-functo
+let init = false;
 
-
-console.log(`INFO check of ${dataDir} dir`);
-if(!fs.existsSync(dataDir)){
-    fs.mkdirSync(dataDir);
-    console.log(`INFO dir ${dataDir} created`);
-}else{
-    console.log(`INFO dir ${dataDir} exist`);
+if(!init){
+    console.log(`INFO check of ${dataDir} dir`);
+    if(!fs.existsSync(dataDir)){
+        fs.mkdirSync(dataDir);
+        console.log(`INFO dir ${dataDir} created`);
+    }else{
+        console.log(`INFO dir ${dataDir} exist`);
+    }
+    init = true;
 }
 
 
@@ -23,7 +26,7 @@ if(!fs.existsSync(dataDir)){
  * @param {*} url 
  */
 function initDataRaw(filename, url){
-    filename = `${dataDir}filename`;
+    filename = `${dataDir}${filename}`;
     fs.access(filename, fs.constants.F_OK, (err) =>{
         if(err){
             console.log(`INFO file ${filename} not exist, try to download...`);
@@ -36,7 +39,7 @@ function initDataRaw(filename, url){
 }
 module.exports.initDataRaw = initDataRaw;
 
-function download(url, filename, afterDownloadCallback){
+function download(url, filename){
     console.log(`INFO download of ${url} and save to ${filename}...`);
     let file = fs.createWriteStream(filename);
     https.get(url, (res)=>{
@@ -68,7 +71,7 @@ function checkEta(url, filename){
                 console.log(`WARN eta of file ${filename} is not equal to eta of url ${url}: ${etaOfFile}!=${etaOfUrl}, download...`)
                 download(url, filename);
             }else{
-                console.log(`INFO eta of file ${filename} is equal to eta of url ${url}: ${etaOfFile}==${etaOfUrl}, loading data...`)
+                console.log(`INFO eta of file ${filename} is equal to eta of url ${url}: ${etaOfFile}==${etaOfUrl}`)
                 afterDownload(filename);
             }
         })
@@ -80,11 +83,5 @@ function checkEta(url, filename){
 }
 
 function afterDownload(filename){
-    console.log(`INFO processing ${filename}...`);
-    if(filename==fileNameComuniItaliani){
-        console.log(`INFO load CSV ${filename}...`);
-
-
-
-    }
+    eventBus.emit('fileDownloaded');
 }
