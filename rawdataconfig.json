@@ -1,0 +1,11 @@
+{
+    
+    "common_Source_comuniItaliani": {
+        "descrizione": "Elenco dei comuni Italiani",
+        "url": "https://www.istat.it/storage/codici-unita-amministrative/Elenco-comuni-italiani.csv",
+        "filename": "Elenco-comuni-italiani.csv",
+        "filetype": "CSV",
+        "options": {"separator":";", "newline":"\r\n"}
+    }
+    
+}
