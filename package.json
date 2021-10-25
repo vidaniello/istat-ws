@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "csv-parser": "^3.0.0",
+    "iconv-lite": "^0.6.3",
     "node-cron": "^3.0.0",
     "pubsub-js": "^1.9.3"
   }
