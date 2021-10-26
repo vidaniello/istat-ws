@@ -1,11 +1,11 @@
-const database = require('../database');
-const common = require('../common');
-const downloader = require('../downloader');
+//const common = require('../common');
+//const database = require('../database');
+//const downloader = require('../downloader');
+const main = require('../main');
 const pubsub = require('pubsub-js');
 
-//downloader.initDataRaw(common.COMUNI_ITALIANI);
 //database.readAsCsv(common.COMUNI_ITALIANI);
-common.initAllDataSources();
+//common.initAllDataSources();
 
 pubsub.subscribe(common.DATABASE_READY_TOPIC, (msg,data)=>{
 
@@ -20,3 +20,5 @@ pubsub.subscribe(common.DATABASE_READY_TOPIC, (msg,data)=>{
     }
 
 });
+
+main.init();

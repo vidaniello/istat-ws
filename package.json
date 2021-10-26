@@ -4,14 +4,24 @@
   "version": "1.0.0",
   "description": "A webservice for ISTAT permalink",
   "main": "index.js",
+  "homepage": "https://github.com/vidaniello/istat-ws",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vidaniello/istat-ws.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test1": "node test/test1.js",
     "debug": "node main.js"
   },
-  "author": "Vincenzo D'Aniello",
-  "license": "ISC",
+  "author": "Vincenzo D'Aniello <vidaniello@gmail.com> (https://github.com/vidaniello)",
+  "license": "GPL-3.0",
   "dependencies": {
     "csv-parser": "^3.0.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
     "iconv-lite": "^0.6.3",
     "node-cron": "^3.0.0",
     "pubsub-js": "^1.9.3"

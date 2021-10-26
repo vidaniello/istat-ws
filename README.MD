@@ -8,4 +8,9 @@ Endpoint web service for static files on the [istat.it](https://www.istat.it/) s
 
 ## Offered services
 
-*processing*
+- GET */getNomeRegione?iso2Provincia=[iso2 codice provincia]*
+    - return a string represent the region of the province, or error 403 if no code finded.
+
+## Setup
+
+Write a `.env` file in the root and add a prop variable named `PORT` with a 
