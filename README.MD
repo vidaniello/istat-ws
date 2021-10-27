@@ -13,4 +13,4 @@ Endpoint web service for static files on the [istat.it](https://www.istat.it/) s
 
 ## Setup
 
-Write a `.env` file in the root and add a prop variable named `PORT` with a 
+Write a `.env` file in the root and add a prop variable named `PORT`, who represent the listen port of the webservice server.
