@@ -14,8 +14,8 @@
   },
   "scripts": {
     "test1": "node test/test1.js",
-    "debug": "node main.js",
-    "start": "node main.js"
+    "debug": "node server.js",
+    "start": "node server.js"
   },
   "author": "Vincenzo D'Aniello <vidaniello@gmail.com> (https://github.com/vidaniello)",
   "license": "GPL-3.0",

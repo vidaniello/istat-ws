@@ -9,7 +9,7 @@ function init(){
     dotenv.config();
     common.init();
 
-    for(let src of allDataSource){
+    for(let src of common.allDataSource){
         pubsub.publish(common.CHECK_ETA_TOPIC, src);
     }
     chron.init();
