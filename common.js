@@ -1,5 +1,9 @@
+const dotenv = require('dotenv');
 const fs = require('fs');
+const os = require('os');
+const path = require('path')
 const config = require('./istat-ws-config.json');
+const package = require('./package.json');
 
 /** @type {string} */
 const CHECK_ETA_TOPIC = "CHECK_ETA_TOPIC";
@@ -17,9 +21,20 @@ module.exports.FILE_READY_TOPIC = FILE_READY_TOPIC;
 const DATABASE_READY_TOPIC = "DATABASE_READY_TOPIC";
 module.exports.DATABASE_READY_TOPIC = DATABASE_READY_TOPIC;
 
-/** @type {string} */
-const DATA_DIR_PATH = "./data/";
-module.exports.DATA_DIR_PATH = DATA_DIR_PATH;
+/**@returns {string} */
+function getBasePath(){
+    return `${os.homedir()}${path.sep}.${package.name}`;
+}
+
+/**@returns {string} */
+function getDataDirPath(){
+    return `${getBasePath()}${path.sep}data`;
+}
+
+/**@returns {string} */
+function getDotEnvFilePath(){
+    return `${getBasePath()}${path.sep}.env`;
+}
 
 /**
  * Class for the datasource declared in the 'config' JSON file.
@@ -59,7 +74,7 @@ class Source{
     }
 
     getFilenameWithPath(){
-        return `${DATA_DIR_PATH}${this.getFilename()}`;
+        return `${getDataDirPath()}${path.sep}${this.getFilename()}`;
     }
 
     getDescrizione(){
@@ -107,12 +122,33 @@ module.exports.iso2Provincia = iso2Provincia;
  * Init function
  */
 function _init(){
-    console.log(`INFO check of ${DATA_DIR_PATH} dir`);
-    if(!fs.existsSync(DATA_DIR_PATH)){
-        fs.mkdirSync(DATA_DIR_PATH);
-        console.log(`INFO dir ${DATA_DIR_PATH} created`);
+
+    //Loading of .env file
+    if(fs.existsSync(getDotEnvFilePath()))
+        dotenv.config({ path: getDotEnvFilePath() });
+    else 
+        dotenv.config();
+    
+
+    checkAndCreateDirs();
+}
+module.exports.init = _init;
+
+function checkAndCreateDirs(){
+    console.log(`INFO check of ${getBasePath()} dir`);
+    if(!fs.existsSync(getBasePath())){
+        fs.mkdirSync(getBasePath());
+        console.log(`INFO dir ${getBasePath()} created`);
     }else{
-        console.log(`INFO dir ${DATA_DIR_PATH} exist`);
+        console.log(`INFO dir ${getBasePath()} exist`);
+    }
+
+    console.log(`INFO check of ${getDataDirPath()} dir`);
+    if(!fs.existsSync(getDataDirPath())){
+        fs.mkdirSync(getDataDirPath());
+        console.log(`INFO dir ${getDataDirPath()} created`);
+    }else{
+        console.log(`INFO dir ${getDataDirPath()} exist`);
     }
 }
-module.exports.init = _init();
+module.exports.checkAndCreateDirs = checkAndCreateDirs;

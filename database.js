@@ -4,12 +4,12 @@ const fs = require('fs');
 const pubsub = require('pubsub-js');
 const common = require('./common');
 
-let token = pubsub.subscribe(common.NEW_FILE_READY_TOPIC, (msg,data)=>{
+let token1 = pubsub.subscribe(common.NEW_FILE_READY_TOPIC, (msg,data)=>{
     console.log(`topic '${msg}'' called`);
     onNewFileReadyTopic(data);
 });
 
-let token = pubsub.subscribe(common.FILE_READY_TOPIC, (msg,data)=>{
+let token2 = pubsub.subscribe(common.FILE_READY_TOPIC, (msg,data)=>{
     console.log(`topic '${msg}'' called`);
     onFileReadyTopic(data);
 });
