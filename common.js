@@ -134,6 +134,9 @@ function _init(){
 }
 module.exports.init = _init;
 
+/**
+ * Check if the dir '{home dir}/istat-ws' and '{home dir}/istat-ws/data' exist and create it if not.
+ */
 function checkAndCreateDirs(){
     console.log(`INFO check of ${getBasePath()} dir`);
     if(!fs.existsSync(getBasePath())){
@@ -152,3 +155,19 @@ function checkAndCreateDirs(){
     }
 }
 module.exports.checkAndCreateDirs = checkAndCreateDirs;
+
+/**
+ * Check if '{home dir}/istat-ws/.env' file exist and delete if. Then, foreach commandline arg
+ * write in '{home dir}/istat-ws/.env' file.
+ * 
+ *  @param {string} content 
+ */
+function cleanAndWriteEnvFile(content){
+    
+    if(fs.existsSync(getDotEnvFilePath()))
+        fs.rmSync(getDotEnvFilePath());
+    
+    fs.writeFileSync(`${getDotEnvFilePath()}`, content);
+    
+}
+module.exports.cleanAndWriteEnvFile = cleanAndWriteEnvFile;

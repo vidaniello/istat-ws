@@ -14,6 +14,7 @@
   },
   "scripts": {
     "test1": "node test/test1.js",
+    "test-install": "node install.js PORT=3000",
     "debug": "node server.js",
     "start": "node server.js"
   },
@@ -26,5 +27,9 @@
     "iconv-lite": "^0.6.3",
     "node-cron": "^3.0.0",
     "pubsub-js": "^1.9.3"
+  },
+  "bin": {
+    "istat-ws": "server.js",
+    "istat-ws-install": "install.js"
   }
 }
