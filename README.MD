@@ -35,11 +35,13 @@ Advice: use [PM2 process manager](https://pm2.keymetrics.io/) to use it in produ
 
 - [Elenco comuni italiani](https://www.istat.it/it/archivio/6789)
 
-
 ## Offered services
 
-- GET */getNomeRegione?iso2Provincia=[iso2 codice provincia]*
+- GET */*
+   - return a string like `Ok! ver......`, used only for test the server status.
+
+- GET */getNomeRegione/[iso2 codice provincia]*
     - return a string represent the region of the province, or error 403 if no code finded.
-    - Example: GET http://hostname.tld/getNomeRegione?iso2Provincia=BA, return: *text/plain*, body:{*Puglia*}
+    - Example: GET http://hostname.tld/getNomeRegione/BA, return: *text/plain*, body:{*Puglia*}
 
 *other ws calls in develop progress...*

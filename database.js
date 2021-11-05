@@ -140,7 +140,7 @@ function clearElencoComuniItaliani(){
  * @returns {string}
  */
 function getNomeRegione(iso2Provincia){
-    let ret = mappa_ProvIso2_Regione.get(iso2Provincia)
+    let ret = mappa_ProvIso2_Regione.get(iso2Provincia.toUpperCase())
     if(ret!==undefined)
         return ret;
     

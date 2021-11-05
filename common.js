@@ -109,13 +109,24 @@ module.exports.allDataSource = allDataSource;
 allDataSource.add(COMUNI_ITALIANI);
 
 
-
+/** 
+ * GET name for the service who retrieve the name of the region by giving the iso2 province abbreviation
+ * @type {string} 
+ * */
+const getNomeRegione = "getNomeRegione";
+module.exports.getNomeRegione = getNomeRegione;
 
 /** @type {string} */
 const iso2Provincia = "iso2Provincia";
 module.exports.iso2Provincia = iso2Provincia;
 
 
+
+/** @returns {string} */
+function getVersion(){
+    return package.version;
+}
+module.exports.getVersion = getVersion;
 
 /**
  * Check if the dir '{home dir}/istat-ws' and '{home dir}/istat-ws/data' exist and create it if not.
