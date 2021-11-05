@@ -117,23 +117,6 @@ module.exports.iso2Provincia = iso2Provincia;
 
 
 
-
-/**
- * Init function
- */
-function _init(){
-
-    //Loading of .env file
-    if(fs.existsSync(getDotEnvFilePath()))
-        dotenv.config({ path: getDotEnvFilePath() });
-    else 
-        dotenv.config();
-    
-
-    checkAndCreateDirs();
-}
-module.exports.init = _init;
-
 /**
  * Check if the dir '{home dir}/istat-ws' and '{home dir}/istat-ws/data' exist and create it if not.
  */
@@ -171,3 +154,20 @@ function cleanAndWriteEnvFile(content){
     
 }
 module.exports.cleanAndWriteEnvFile = cleanAndWriteEnvFile;
+
+
+/**
+ * Init function
+ */
+ function init(){
+
+    //Loading of .env file
+    if(fs.existsSync(getDotEnvFilePath()))
+        dotenv.config({ path: getDotEnvFilePath() });
+    else 
+        dotenv.config();
+    
+
+    checkAndCreateDirs();
+}
+module.exports.init = init;
