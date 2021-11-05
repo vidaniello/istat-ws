@@ -2,7 +2,7 @@
 //const database = require('../database');
 //const downloader = require('../downloader');
 //const pubsub = require('pubsub-js');
-const server = require('../server')
+//const server = require('../server')
 
 //database.readAsCsv(common.COMUNI_ITALIANI);
 //common.initAllDataSources();
