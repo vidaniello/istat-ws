@@ -32,5 +32,8 @@
   "bin": {
     "istat-ws": "server.js",
     "istat-ws-install": "install.js"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
