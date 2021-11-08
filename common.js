@@ -3,6 +3,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path')
 const config = require('./istat-ws-config.json');
+module.exports.config = config;
 const package = require('./package.json');
 
 /** @type {string} */
@@ -20,6 +21,10 @@ module.exports.FILE_READY_TOPIC = FILE_READY_TOPIC;
 /** @type {string} */
 const DATABASE_READY_TOPIC = "DATABASE_READY_TOPIC";
 module.exports.DATABASE_READY_TOPIC = DATABASE_READY_TOPIC;
+
+/** @type {string} */
+const CHECK_ALL_DATASOURCE_TOPIC = "CHECK_ALL_DATASOURCE_TOPIC";
+module.exports.CHECK_ALL_DATASOURCE_TOPIC = CHECK_ALL_DATASOURCE_TOPIC;
 
 /**@returns {string} */
 function getBasePath(){

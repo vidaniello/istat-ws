@@ -7,11 +7,19 @@ const database = require('./database');
 const httpServer = require('./httpServer');
 const chron = require('./chron');
 
+let token = pubsub.subscribe(common.CHECK_ALL_DATASOURCE_TOPIC, (msg,data)=>{
+    console.log(`topic '${msg}'' called`);
+    checkAllDatasource();
+});
+
 common.init();
 chron.init();
 httpServer.initHttpServer();
 
-
-for(let src of common.allDataSource){
-    pubsub.publish(common.CHECK_ETA_TOPIC, src);
+function checkAllDatasource(){
+    for(let src of common.allDataSource){
+        pubsub.publish(common.CHECK_ETA_TOPIC, src);
+    }
 }
+
+checkAllDatasource();

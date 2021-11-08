@@ -1,5 +1,6 @@
 {
-    
+    "chechAllSourceCronShedule": "0 6 * * *",
+
     "common_Source_comuniItaliani": {
         "code": "elencoComuniItaliani",
         "descrizione": "Elenco dei comuni Italiani",
