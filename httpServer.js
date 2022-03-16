@@ -35,7 +35,7 @@ app.get(`/${common.getNomeRegione}/:${common.iso2Provincia}`, (req,resp)=>{
         resp.contentType(textPlain);
         resp.send(database.getNomeRegione(iso2ProAbbr));
     } catch (error) {
-        resp.status(httpstatuscodes.StatusCodes.FORBIDDEN)
+        resp.status(httpstatuscodes.StatusCodes.NOT_FOUND)
             .send(`the iso2 province abbreviation ${iso2ProAbbr} not exist.`);
     }
 });
