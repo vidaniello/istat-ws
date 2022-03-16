@@ -6,6 +6,7 @@ const common = require('./common');
 
 https.globalAgent.options.ca = rootCas;
 
+//GEANT OV RSA CA 4     public key
 https.globalAgent.options.ca.push(`-----BEGIN CERTIFICATE-----
 MIIG5TCCBM2gAwIBAgIRANpDvROb0li7TdYcrMTz2+AwDQYJKoZIhvcNAQEMBQAw
 gYgxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpOZXcgSmVyc2V5MRQwEgYDVQQHEwtK
