@@ -1,7 +1,7 @@
 {
   "type": "commonjs",
   "name": "istat-ws",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A webservice for ISTAT permalink",
   "main": "index.js",
   "homepage": "https://github.com/vidaniello/istat-ws",
