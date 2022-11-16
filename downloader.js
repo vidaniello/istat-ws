@@ -103,9 +103,15 @@ module.exports.checkEta = checkEta;
         res.pipe(file);
         file.on("finish", ()=>{
             file.close();
-            fs.writeFileSync(`${filename}.eta`, res.headers['last-modified']);
-            console.log(`INFO download of '${url}'' and save to '${filename}'' success`);
+            let lastModified = res.headers['last-modified'];
+            if(lastModified==undefined){
+                console.log(`INFO download of '${url}'' and save to '${filename}'' success BUT ETA FILE NOT UPDATED, the 'last-modified' header tag is absent in the response object.`);
+            }else {
+                fs.writeFileSync(`${filename}.eta`, lastModified);
+                console.log(`INFO download of '${url}'' and save to '${filename}'' success`);
+            }
             pubsub.publish(common.NEW_FILE_READY_TOPIC, source);
+
         });
     })
     .on("error", (err)=>{
